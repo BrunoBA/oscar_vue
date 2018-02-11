@@ -2,21 +2,23 @@
   <div class="body">
     <h1>{{ name }}</h1>
     <ul class="indicated-list">
+      
       <li class="indicated-item" v-for="movie of movies">
-        <img class="image" :src="movie.path">
-        <div class="legend">
-          <span class="title">{{ movie.name }}</span>
-        </div>
-        <div class="sublegend">
-          <span>({{ movie.name }})</span>
-        </div>
+        <indicated-component :path="movie.path" :name="movie.name"/>
       </li>
     </ul>
   </div>
 </template>
 
 <script>
+  import Indicated from './Indicated.vue';
+
   export default {
+
+    components: {
+      'indicated-component': Indicated
+    },
+
     name: 'movie',
     data () {
       return {
@@ -215,16 +217,12 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
+<style scoped>
   .body {
     width: 100%;
   }
 
-  .title {
-      font-weight: 650;
-  }
-
-  .indicated {
+  .indicated-list {
     width: 100%;
   }
 
@@ -233,22 +231,6 @@
     margin: 8px 8px;
   }
   
-  .image {
-    width: 138px;
-    height: 188px;
-    cursor: pointer;
-  }
-
-  .legend {
-    font-size: 12px;
-    padding: 0px;
-    text-align: center;
-  }
-
-  .sublegend {
-    font-style: italic;
-  }
-
   ul {
     list-style-type: none;
     padding-left: 0px;
