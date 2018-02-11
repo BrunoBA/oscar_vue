@@ -1,6 +1,5 @@
 <template>
   <div class="body">
-    <h1>{{ name }}</h1>
     <ul class="indicated-list">
       
       <li class="indicated-item" v-for="movie of movies">
