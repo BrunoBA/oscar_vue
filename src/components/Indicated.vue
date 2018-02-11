@@ -6,13 +6,13 @@
         <div class="legend">
           <span class="title">{{ name }}</span>
         </div>
-        <span class="sublegend">({{ name }})</span>
+        <span class="sublegend">({{ translate }})</span>
     </div>
 </template>
 
 <script>
     export default {
-        props:['name', 'path']    
+        props:['name', 'path', 'translate']    
     }
 </script>
 
@@ -36,6 +36,7 @@
 
     .sublegend {
         font-style: italic;
+        font-size: 12px;
     }
 
 </style>
