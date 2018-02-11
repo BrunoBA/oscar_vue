@@ -224,6 +224,10 @@
       font-weight: 650;
   }
 
+  .indicated {
+    width: 100%;
+  }
+
   .indicated-item {
     display: inline-block;
     margin: 8px 8px;
@@ -247,6 +251,6 @@
 
   ul {
     list-style-type: none;
-    padding: 0;
+    padding-left: 0px;
   }
 </style>

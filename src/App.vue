@@ -4,6 +4,16 @@
       <span>OSCAR 2018</span>
     </header>
     <main>
+      <div>
+        <select class="search_movie">
+          <option value="_list">Minha lista</option>
+          <option value="category">Melhor Filme</option>
+          <option value="category">Melhor Atriz</option>
+          <option value="category">Melhor Ator</option>
+          <option value="category">Melhor Atriz C.</option>
+        </select>
+        <input class="search_movie" type="text">
+      </div>
       <router-view></router-view>
     </main>
   </div>
@@ -20,11 +30,15 @@ body {
   margin: 0;
 }
 
+.search_movie {
+  border: 0.5px solid #35495E;
+  background-color: #35485d38;
+}
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
 }
 
 main {
@@ -40,7 +54,7 @@ header {
   color: #ffffff;
 }
 
-header span {
+header {
   display: block;
   position: relative;
   font-size: 20px;
