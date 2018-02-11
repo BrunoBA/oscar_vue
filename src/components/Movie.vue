@@ -1,8 +1,8 @@
 <template>
   <div class="body">
-    <search/>
+    <search @filterMovies="changeFilter($event)"/>
     <ul class="indicated-list">
-      <li class="indicated-item" v-for="movie of movies">
+      <li class="indicated-item" v-for="movie of listaOfMovies">
         <indicated-component 
           :path="movie.path" 
           :name="movie.name"
@@ -26,7 +26,7 @@
     name: 'movie',
     data () {
       return {
-        name: 'Indicados',
+        filter: '',
         movies: 
         [
             {
@@ -809,6 +809,24 @@
     },
     created() {
       console.log('Essa chamada ainda vai ser muito importante!');
+    },
+    computed: {
+        listaOfMovies() {
+            // let threeMovies = this.movies.slice(0,9);
+            // return threeMovies;
+
+            let regex = new RegExp(this.filter.trim(), 'i');
+            return this.movies.filter( movie => {
+                if (regex.test(movie.name) || regex.test(movie.translate)) {
+                    return movie;
+                }
+            });
+        }
+    },
+    methods: {
+        changeFilter($event){
+            this.filter = $event;
+        }
     }
   }
 </script>

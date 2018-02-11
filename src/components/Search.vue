@@ -6,7 +6,8 @@
             </select>
         </div>
         <div class="func">
-            <input type="text" class="search search_movie_text" placeholder="Filme">
+            <input type="text" @input="sendToParent($event.target.value)" class="search search_movie_text" placeholder="Filme">
+            {{ filter }}
         </div>    
     </div>
 </template>
@@ -15,6 +16,7 @@
   export default {
       data() {
         return {
+          filter: '',
           categories:
           [ 
                 {
@@ -118,6 +120,12 @@
                   label: 'Melhor Roteiro Original'
                 }
           ]
+      }
+    },
+
+    methods: {
+      sendToParent(value) {
+        this.$emit('filterMovies', value);
       }
     }
   }
