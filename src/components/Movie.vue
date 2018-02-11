@@ -1,8 +1,11 @@
 <template>
   <div class="body">
-    <search @filterMovies="changeFilter($event)"/>
+    <search 
+        @filterCategories="changeFilterCategory($event)"
+        @filterMovies="changeFilterName($event)"
+        />
     <ul class="indicated-list">
-      <li class="indicated-item" v-for="movie of listaOfMovies">
+      <li class="indicated-item" v-for="movie of listOfMovies">
         <indicated-component 
           :path="movie.path" 
           :name="movie.name"
@@ -27,6 +30,7 @@
     data () {
       return {
         filter: '',
+        category: 'MY_LIST',
         movies: 
         [
             {
@@ -219,7 +223,8 @@
                     "MUSIC_ORIGINAL_SCORE",
                     "WRITING_ORIGINAL_SCREENPLAY"
                 ]
-            },
+            }
+            ,
             {
                 "name":"Roman J. Israel, Esq.",
                 "path":require('../assets/roman_j_israel_esq.jpg'),
@@ -811,21 +816,29 @@
       console.log('Essa chamada ainda vai ser muito importante!');
     },
     computed: {
-        listaOfMovies() {
-            // let threeMovies = this.movies.slice(0,9);
-            // return threeMovies;
-
+        listOfMovies() {
             let regex = new RegExp(this.filter.trim(), 'i');
             return this.movies.filter( movie => {
-                if (regex.test(movie.name) || regex.test(movie.translate)) {
+                let checkName = regex.test(movie.name) || regex.test(movie.translate);
+                let checkCategory = true;
+
+                if (this.category !== 'MY_LIST') {
+                    checkCategory = (movie.categories.indexOf(this.category) >= 0); //Validação correta
+                }
+
+                if (checkName && checkCategory) {
                     return movie;
                 }
             });
         }
     },
     methods: {
-        changeFilter($event){
+        changeFilterName($event){
             this.filter = $event;
+        },
+
+        changeFilterCategory($event){
+            this.category = $event;
         }
     }
   }

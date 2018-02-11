@@ -42,7 +42,7 @@ main {
   margin: 0;
   height: 56px;
   padding: 0 16px 0 24px;
-  background-color: #35495E;
+  background-color: #4f84b5;
   color: #ffffff;
   display: block;
   position: relative;

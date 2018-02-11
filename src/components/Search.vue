@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="func">
-            <select class="search search_movie_select">
+            <select @change="sendCategory($event.target.value)" class="search search_movie_select">
                 <option v-for="category of categories" :value="category.value">{{ category.label }}</option>
             </select>
         </div>
@@ -20,7 +20,7 @@
           categories:
           [ 
                 {
-                  value:'MY_LIST',
+                  value: 'MY_LIST',
                   label: 'Minha Lista'
                 },
                 {
@@ -126,6 +126,10 @@
     methods: {
       sendToParent(value) {
         this.$emit('filterMovies', value);
+      },
+
+      sendCategory(value) {
+        this.$emit('filterCategories', value);
       }
     }
   }
