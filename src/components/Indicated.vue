@@ -11,6 +11,8 @@
 </template>
 
 <script>
+    import { categories } from '../categories.js';
+
     export default {
         props:['movie', 'category'],
         data() {
@@ -20,7 +22,8 @@
                   'ACTRESS_IN_A_LEADING_ROLE',
                   'ACTOR_IN_A_SUPPORTING_ROLE',
                   'ACTRESS_IN_A_SUPPORTING_ROLE'
-                ]
+                ],
+                categories
             }
         },
         computed: {
@@ -59,7 +62,7 @@
                 .replace(/[ -]/g, '_');
             },
 
-            saveToCache(){
+            saveToCache () {
                 let myList = localStorage.getItem('myList') || '{}';
                 myList = JSON.parse(myList);
                 
@@ -67,11 +70,20 @@
                     name: this.getRealName,
                     path: this.getRealPath,
                     category: this.category,
+                    label: this.translateCategory(this.category),
                     translate: this.movie.translate
                 }
 
                 myList[this.category.toLowerCase()] = movie;
                 localStorage.setItem('myList', JSON.stringify(myList));
+            }, 
+
+            translateCategory (category) {
+                return this.categories.reduce((translate, cur) => {
+                    if (cur.value == category)
+                        return cur.label;
+                    return translate;
+                }, '');
             }
         }   
     }

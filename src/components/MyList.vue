@@ -1,7 +1,7 @@
 <template>
     <ul class="indicated-list">
         <li class="indicated-item" v-for="movie of extractMovies">
-            <span class="title">{{ movie.category }}</span>
+            <span class="title">{{ movie.label }}</span>
             <div class="movie">
                 <img class="image" :src="movie.path">
             </div>
@@ -13,14 +13,11 @@
     </ul>
 </template>
 <script>
-    import { categories } from '../categories.js';
-
     export default {
         props:['filter'],
         data() {
             return {
-                name: 'My list',
-                categories
+                name: 'My list',        
             }
         },
         created() {
@@ -34,7 +31,10 @@
                 let regex = new RegExp(this.filter.trim(), 'i');
 
                 return listMovies.filter( movie => {
-                    if (regex.test(movie.name) || regex.test(movie.translate) || regex.test(movie.category)) {
+                    if (regex.test(movie.name) || 
+                        regex.test(movie.translate) || 
+                        regex.test(movie.category) || 
+                        regex.test(movie.label)) {
                         return movie;
                     }
                 });
