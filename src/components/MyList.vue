@@ -1,7 +1,9 @@
 <template>
     <ul class="indicated-list">
         <li class="indicated-item" v-for="movie of extractMovies">
-            <span class="title">{{ movie.label }}</span>
+            <div>
+              <span class="title category">{{ movie.label }}</span>  
+            </div>
             <div class="movie">
                 <img class="image" :src="movie.path">
             </div>
@@ -50,9 +52,23 @@
     }
 </script>
 <style scoped>
+        
+    .indicated-list {
+        width: 100%;
+    }
+
+    .indicated-item {
+        display: inline-block;
+        margin: 8px 8px;
+    }
+    
     .title {
         font-weight: 650;
     }    
+
+    .category {
+        font-size: 12px;
+    }
 
     .image {
         width: 138px;
