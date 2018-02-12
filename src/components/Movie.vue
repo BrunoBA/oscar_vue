@@ -11,24 +11,24 @@
               :category="category"/>
         </li>
     </ul>
-    <ul class="indicated-list" v-else>
-        <li>
-            Sua lista
-        </li>
-    </ul>
+    <my-list v-else
+    :filter="filter"/> 
+     
   </div>
 </template>
 
 <script>
   import Indicated from './Indicated.vue';
   import Search from './Search.vue';
+  import MyList from './MyList.vue';
   import { movies } from '../movies.js';
 
   export default {
 
     components: {
       'indicated-component': Indicated,
-      search: Search
+      search: Search,
+      'my-list': MyList
     },
 
     name: 'movie',

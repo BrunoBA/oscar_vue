@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="movie">
-            <img class="image" :src="getRealPath">
+            <img @click="saveToCache()" class="image" :src="getRealPath">
         </div>
         <div class="legend">
           <span class="title">{{ getRealName }}</span>
@@ -57,6 +57,21 @@
                 .replace(new RegExp('[Ç]','gi'), 'c')
                 .replace(/[.]/g, '')
                 .replace(/[ -]/g, '_');
+            },
+
+            saveToCache(){
+                let myList = localStorage.getItem('myList') || '{}';
+                myList = JSON.parse(myList);
+                
+                let movie = {
+                    name: this.getRealName,
+                    path: this.getRealPath,
+                    category: this.category,
+                    translate: this.movie.translate
+                }
+
+                myList[this.category.toLowerCase()] = movie;
+                localStorage.setItem('myList', JSON.stringify(myList));
             }
         }   
     }
