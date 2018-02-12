@@ -7,9 +7,8 @@
     <ul class="indicated-list" v-if="category != 'MY_LIST'">
         <li class="indicated-item" v-for="movie of listOfMovies">
             <indicated-component 
-              :path="movie.path" 
-              :name="movie.name"
-              :translate="movie.translate"/>
+              :movie="movie"
+              :category="category"/>
         </li>
     </ul>
     <ul class="indicated-list" v-else>
@@ -37,7 +36,8 @@
       return {
         filter: '',
         category: 'MY_LIST',
-        movies
+        movies,
+        
       }
     },
     created() {
@@ -51,7 +51,7 @@
                 let checkCategory = true;
 
                 if (this.category !== 'MY_LIST') {
-                    checkCategory = (movie.categories.indexOf(this.category) >= 0); //Validação correta
+                    checkCategory = (movie.categories.indexOf(this.category) >= 0);
                 }
 
                 if (checkName && checkCategory) {
@@ -64,7 +64,6 @@
         changeFilterName($event){
             this.filter = $event;
         },
-
         changeFilterCategory($event){
             this.category = $event;
         }
