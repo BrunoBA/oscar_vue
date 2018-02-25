@@ -45,7 +45,7 @@
     },
     computed: {
         listOfMovies() {
-            let regex = new RegExp(this.filter.trim(), 'i');
+            let regex = new RegExp(this.filter.replace(/\W/g, '').trim(), 'i');
             return this.movies.filter( movie => {
                 let checkName = regex.test(movie.name) || regex.test(movie.translate);
                 let checkCategory = true;
