@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="movie">
-            <img @click="saveToCache()" class="image" :src="getRealPath">
+            <img @click="saveToCache()" class="image" v-bind:class="{ selected: isSelected }" :src="getRealPath">
         </div>
         <div class="legend">
           <span class="title">{{ getRealName }}</span>
@@ -27,6 +27,17 @@
             }
         },
         computed: {
+            isSelected(){
+                let myList = localStorage.getItem('myList') || '{}';
+                let database = JSON.parse(myList);
+
+                if (database == {} || database[this.category.toLowerCase()] == undefined) {
+                    return false;
+                }
+
+                return this.movie.translate == database[this.category.toLowerCase()].translate;
+            },  
+
             getRealName(){
                 if (this.special_categories.indexOf(this.category) >= 0) {
                     let pos = this.movie.categories.indexOf(this.category);
@@ -99,6 +110,10 @@
         width: 138px;
         height: 188px;
         cursor: pointer;
+    }
+
+    .selected {
+        border: 2px solid #d8d41c;
     }
 
     .legend {
