@@ -30,7 +30,7 @@
             extractMovies() {
                 let myList = this.loadInfo();
                 let listMovies = Object.keys(myList).map(function (key) { return myList[key]; });
-                let regex = new RegExp(this.filter.trim(), 'i');
+                let regex = new RegExp(this.filter.replace(/\W/g, '').trim(), 'i');
 
                 return listMovies.filter( movie => {
                     if (regex.test(movie.name) || 
