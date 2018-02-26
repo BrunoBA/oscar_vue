@@ -10,7 +10,7 @@ Vue.directive('my-select', {
                 sameClass[j].classList.remove("selected");
             }
 
-            this.classList.add("selected");
+            // this.classList.add("selected");
         });
     }
 });

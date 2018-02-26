@@ -112,8 +112,15 @@
         cursor: pointer;
     }
 
+    .image:hover {
+        width: 138px;
+        height: 188px;
+        cursor: pointer;
+        border: 4px solid #d8d41c;
+    }
+
     .selected {
-        border: 2px solid #d8d41c;
+        border: 4px solid #d8d41c;
     }
 
     .legend {
