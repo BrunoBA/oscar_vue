@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="movie">
-            <img @click="saveToCache()" class="image" v-bind:class="{ selected: isSelected }" :src="getRealPath">
+            <img v-my-select @click="saveToCache()" class="image" v-bind:class="{ selected: isSelected }" :src="getRealPath">
         </div>
         <div class="legend">
           <span class="title">{{ getRealName }}</span>
