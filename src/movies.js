@@ -775,5 +775,16 @@
         "categories":[
             "WRITING_ORIGINAL_SCREENPLAY"
         ]
+    },
+    {
+        "name":"Three Billboards outside Ebbing, Missouri",
+        "path":require('./assets/three_billboards_outside_ebbing_missouri.jpg'),
+        "translate": "Três Anúncios Para um Crime",
+        "info":[
+            "Sam Rockwell"
+        ],
+        "categories":[
+            "ACTOR_IN_A_SUPPORTING_ROLE"
+        ]
     }
  ]
