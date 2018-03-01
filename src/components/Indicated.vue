@@ -12,6 +12,7 @@
 
 <script>
     import { categories } from '../categories.js';
+    import moment from 'moment';
 
     export default {
         props:['movie', 'category'],
@@ -74,19 +75,30 @@
             },
 
             saveToCache () {
-                let myList = localStorage.getItem('myList') || '{}';
-                myList = JSON.parse(myList);
-                
-                let movie = {
-                    name: this.getRealName,
-                    path: this.getRealPath,
-                    category: this.category,
-                    label: this.translateCategory(this.category),
-                    translate: this.movie.translate
-                }
+                let oscarDay = moment(new Date("2018","02", "04", "22", "00", "00"));
+                let validate = moment(new Date()).isBefore(oscarDay);
+                let today = moment(new Date());
 
-                myList[this.category.toLowerCase()] = movie;
-                localStorage.setItem('myList', JSON.stringify(myList));
+                if (validate) {
+                    let myList = localStorage.getItem('myList') || '{}';
+                    myList = JSON.parse(myList);
+                    
+                    let movie = {
+                        name: this.getRealName,
+                        path: this.getRealPath,
+                        category: this.category,
+                        label: this.translateCategory(this.category),
+                        translate: this.movie.translate
+                    }
+
+                    myList[this.category.toLowerCase()] = movie;
+                    localStorage.setItem('myList', JSON.stringify(myList));
+
+                    console.log(`${today.format('DD/MM/YYYY HH:mm:ss')} uma data anterior ao dia do oscar, ${oscarDay.format('DD/MM/YYYY HH:mm:ss')}`);
+                    console.log('Salvo no banco de dados!');
+                } else {
+                    console.log(`${today.format('DD/MM/YYYY HH:mm:ss')} uma data depois ao dia do oscar, ${oscarDay.format('DD/MM/YYYY HH:mm:ss')}`);
+                }
             }, 
 
             translateCategory (category) {

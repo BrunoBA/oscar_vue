@@ -171,7 +171,7 @@
     {
         "name":"Three Billboards outside Ebbing, Missouri",
         "path":require('./assets/three_billboards_outside_ebbing_missouri.jpg'),
-        "translate": "Três Anúncios Para um Crime",
+        "translate": "Três Anúncios Para um Crime ",
         "info":[
             "Graham Broadbent, Pete Czernin and Martin McDonagh, Producers",
             "Frances McDormand",
@@ -778,7 +778,6 @@
     },
     {
         "name":"Three Billboards outside Ebbing, Missouri",
-        "path":require('./assets/three_billboards_outside_ebbing_missouri.jpg'),
         "translate": "Três Anúncios Para um Crime",
         "info":[
             "Sam Rockwell"
